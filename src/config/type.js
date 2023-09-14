@@ -1,0 +1,10 @@
+exports.TOKEN_TYPE = {
+  ACCESS: "ACCESS",
+  REFRESH: "REFRESH",
+};
+
+exports.ROLES = {
+  ADMIN: "ADMIN",
+  DOCTOR: "DOCTOR",
+  CUSTOMER: "CUSTOMER",
+};
