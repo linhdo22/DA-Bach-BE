@@ -6,9 +6,10 @@ const { TOKEN_TYPE } = require("../config/type");
 const { Token, Account } = require("../models");
 const tokenService = require("./token.service");
 
-exports.isPasswordMatch = (savedPassword, sentPassword) => {
+const isPasswordMatch = (savedPassword, sentPassword) => {
   return bcrypt.compareSync(sentPassword, savedPassword);
 };
+exports.isPasswordMatch = isPasswordMatch;
 
 exports.authenticateAccount = async (email, password) => {
   let account = null;
@@ -16,6 +17,7 @@ exports.authenticateAccount = async (email, password) => {
   if (!account || !isPasswordMatch(account.password, password)) {
     throw new ApiError(httpStatus.UNAUTHORIZED, "loi");
   }
+  delete account.password;
   return account;
 };
 

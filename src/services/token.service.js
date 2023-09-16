@@ -56,14 +56,14 @@ const verifyJWTToken = async (token, type) => {
   return savedToken;
 };
 
-const generateAuthTokens = async (account) => {
+const generateAuthTokens = async (accountId) => {
   const accessTokenExpires = moment().add(
     config.jwt.accessExpirationMinutes,
     "minutes"
   );
 
   const accessToken = generateJWTToken(
-    account.id,
+    accountId,
     accessTokenExpires,
     TOKEN_TYPE.ACCESS
   );
@@ -73,14 +73,14 @@ const generateAuthTokens = async (account) => {
     "days"
   );
   const refreshToken = generateJWTToken(
-    account.id,
+    accountId,
     refreshTokenExpires,
     TOKEN_TYPE.REFRESH
   );
 
   await saveToken(
     refreshToken,
-    account.id,
+    accountId,
     refreshTokenExpires,
     TOKEN_TYPE.REFRESH
   );

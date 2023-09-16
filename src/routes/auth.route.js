@@ -11,5 +11,6 @@ router.post(
   auth([ADMIN, CUSTOMER, DOCTOR]),
   authController.signOut
 );
+router.post("/refresh-token", authController.refreshToken);
 
 module.exports = router;

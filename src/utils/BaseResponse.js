@@ -1,4 +1,4 @@
-class BaseResponse {
+class BaseResponseClass {
   /**
    *
    * @param {number} code
@@ -12,4 +12,4 @@ class BaseResponse {
   }
 }
 
-module.exports = BaseResponse;
+exports.BaseResponse = BaseResponseClass;

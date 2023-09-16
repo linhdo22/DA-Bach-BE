@@ -14,11 +14,6 @@ const Account = sequelize.define("accounts", {
     index: true,
     unique: true,
   },
-  phone: {
-    type: DataTypes.STRING,
-    index: true,
-    unique: true,
-  },
   password: {
     type: DataTypes.STRING,
     allowNull: false,

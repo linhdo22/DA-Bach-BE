@@ -8,7 +8,7 @@ const accountController = require("../controllers/account.controller");
 
 router.get("/:id", auth([ADMIN]), accountController.getAccountById);
 router.get("/", auth([ADMIN]), accountController.getAccountList);
-router.post("/", auth([ADMIN]), accountController.createAccount);
+router.post("/", accountController.createAccount);
 router.patch("/", auth([ADMIN]), accountController.updateAccount);
 router.delete("/", auth([ADMIN]), accountController.removeAccount);
 
