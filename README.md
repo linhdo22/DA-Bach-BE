@@ -11,7 +11,7 @@ Các bước chạy:
 * tạo database trước khi start (thông qua workbench hoặc bất cứ trình quản trị database nào)
 * lần đàu chạy thì bỏ comment dòng `sequelize.sync({ alter: true, force: true });` trong file `src/index.js`
 * Mặc định sẽ chạy ở cổng 3000 theo như file `.env`
-* Cần tạo 1 admin user (hướng đãn bên dưới)
+* Cần tạo 1 admin user (hướng đãn bên dưới), sau đó đăng nhập = tk này và tạo các user khác
 
 ## Tạo Admin user
 
@@ -20,11 +20,23 @@ Các bước chạy:
   ```
   url: localhost:3000/api/account/
   method: POST
-  body: { "email": "linh@gmail.com", "password": "123456", "role":"ADMIN" }
+  body: {
+    "account": {
+        "email": "linh@gmail.com",
+        "password": "123456",
+        "role": "ADMIN"
+    }
+  }
   ```
 
 - hoặc curl:
 
 ```
-curl --location 'localhost:3000/api/account/' \ --header 'Content-Type: application/json' \ --data-raw '{ "email": "linh@gmail.com", "password": "123456", "role":"ADMIN" }'
+curl --location 'localhost:3000/api/account/' \ --header 'Content-Type: application/json' \ --data-raw '{
+    "account": {
+        "email": "linh@gmail.com",
+        "password": "123456",
+        "role": "ADMIN"
+    }
+}'
 ```

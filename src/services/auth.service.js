@@ -46,5 +46,5 @@ exports.refreshToken = async (rfToken) => {
     throw new ApiError(httpStatus.UNAUTHORIZED, "loi");
   }
   await savedRefreshToken.destroy();
-  return tokenService.generateAuthTokens(account);
+  return tokenService.generateAuthTokens(account.id);
 };

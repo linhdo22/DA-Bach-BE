@@ -17,7 +17,13 @@ exports.createAccount = async ({ email, password, role }, transaction) => {
   );
   return account;
 };
-exports.getAccountById = async () => {};
+exports.getAccountById = async (id) => {
+  return Account.findOne({
+    where: { id },
+    attributes: ["id"],
+    raw: true,
+  });
+};
 exports.getAccountByEmail = async (email) => {
   return Account.findOne({
     where: { email },

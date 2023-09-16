@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router();
 const authRoute = require("./auth.route");
 const accountRoute = require("./account.route");
+const drugRoute = require("./drug.route");
 
 const defaultRoutes = [
   {
@@ -12,6 +13,10 @@ const defaultRoutes = [
   {
     path: "/auth",
     route: authRoute,
+  },
+  {
+    path: "/drug",
+    route: drugRoute,
   },
 ];
 

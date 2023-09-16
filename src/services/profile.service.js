@@ -1,5 +1,5 @@
 const httpStatus = require("http-status");
-const { Profile, UserProfile } = require("../models");
+const { Profile } = require("../models");
 const ApiError = require("../utils/ApiError");
 
 exports.createProfile = async (data, transaction) => {
