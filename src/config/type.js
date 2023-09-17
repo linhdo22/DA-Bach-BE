@@ -1,6 +1,7 @@
 exports.TOKEN_TYPE = {
   ACCESS: "ACCESS",
   REFRESH: "REFRESH",
+  RESET: "RESET",
 };
 
 exports.ROLES = {

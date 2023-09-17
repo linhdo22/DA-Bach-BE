@@ -8,6 +8,7 @@ dotenv.config({
 module.exports = {
   env: process.env.NODE_ENV,
   port: process.env.PORT,
+  feEndPoint: process.env.FE_ENDPOINT,
   mysql: {
     username: process.env.MYSQL_USER,
     password: process.env.MYSQL_PASSWORD,
@@ -25,5 +26,9 @@ module.exports = {
       process.env.JWT_VERIFY_EMAIL_EXPIRATION_MINUTES,
     tokenNewAccountExpirationMinutes:
       process.env.JWT_TOKEN_NEW_ACCOUNT_EXPIRATION_MINUTES,
+  },
+  email: {
+    user: process.env.MAIL_USER,
+    password: process.env.MAIL_PASSWORD,
   },
 };

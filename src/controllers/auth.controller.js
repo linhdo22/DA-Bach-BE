@@ -21,3 +21,14 @@ exports.refreshToken = catchAsync(async (req, res) => {
   const tokens = await authService.refreshToken(req.body.refreshToken);
   res.send(new BaseResponse(httpStatus.OK, { ...tokens }, ""));
 });
+
+exports.forgotPassword = catchAsync(async (req, res) => {
+  await authService.forgotPassword(req.body.email);
+  res.send(new BaseResponse(httpStatus.OK));
+});
+
+exports.resetPassword = catchAsync(async (req, res) => {
+  console.log(req.body);
+  await authService.resetPassword(req.body);
+  res.send(new BaseResponse(httpStatus.OK));
+});
