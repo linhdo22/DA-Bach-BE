@@ -6,16 +6,15 @@ exports.createProfile = async (data, transaction) => {
   const profile = await Profile.create(data, { transaction, raw: true });
   return profile;
 };
-exports.getProfileById = async () => {};
-exports.getProfileByEmail = async (email) => {
+exports.getProfileByAccountId = async (accountId) => {
   return Profile.findOne({
-    where: { email },
+    where: { accountId },
     attributes: { exclude: ["createAt", "updateAt"] },
   });
 };
-exports.getProfileList = async () => {};
+
 exports.updateProfile = async (accountId, data, transaction) => {
-  return Profile.update(data, { where: { accountId: accountId }, transaction });
+  return Profile.update(data, { where: { accountId }, transaction });
 };
 exports.removeProfile = async (accountId, transaction) => {
   return Profile.destroy({
