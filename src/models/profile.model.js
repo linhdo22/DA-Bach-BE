@@ -16,6 +16,7 @@ const Profile = sequelize.define("profiles", {
   },
   rate: {
     type: DataTypes.TINYINT,
+    defaultValue: 5,
   },
 });
 

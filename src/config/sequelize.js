@@ -10,6 +10,7 @@ const sequelize = new Sequelize(
     port: mysql.port,
     dialect: "mysql",
     timezone: "+07:00",
+    logging: false,
   }
 );
 

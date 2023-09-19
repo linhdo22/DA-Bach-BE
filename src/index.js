@@ -1,5 +1,5 @@
-const app = require('./app');
-const config = require('./config/config');
+const app = require("./app");
+const config = require("./config/config");
 const sequelize = require("./config/sequelize");
 
 let server;
