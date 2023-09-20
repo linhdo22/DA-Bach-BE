@@ -8,7 +8,6 @@ const auth = (roles) => (req, res, next) => {
       if (err || info || !account) {
         reject(new ApiError(httpStatus.UNAUTHORIZED, "Please authenticate"));
       }
-      console.log(account.role, roles);
       if (!roles.includes(account.role)) {
         reject(new ApiError(httpStatus.FORBIDDEN, "Permission denied"));
       }

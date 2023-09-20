@@ -2,6 +2,7 @@ const sequelize = require("../src/config/sequelize");
 const { ROLES } = require("../src/config/type");
 const { createAccount } = require("./gen-account");
 const { createBooking } = require("./gen-booking");
+const { createDrug } = require("./gen-drug");
 
 const genData = async () => {
   await sequelize.sync({ alter: true, force: true });
@@ -29,6 +30,11 @@ const genData = async () => {
     for (let j = 0; j < 10; j++) {
       await createBooking(i, Math.round(Math.random() * (42 - 13) + 13));
     }
+  }
+
+  // drug
+  for (let i = 1; i <= 50; i++) {
+    await createDrug();
   }
   console.log("done");
   sequelize.close();

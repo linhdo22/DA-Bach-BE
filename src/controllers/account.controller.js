@@ -46,7 +46,6 @@ exports.updateAccount = catchAsync(async (req, res) => {
 
 exports.removeAccount = catchAsync(async (req, res) => {
   const { accountId } = req.body;
-  console.log(req.body);
   const t = await sequelize.transaction();
   try {
     await profileService.removeProfile(accountId, t);

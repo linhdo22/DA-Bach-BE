@@ -15,7 +15,7 @@ const Drug = sequelize.define("drugs", {
     unique: true,
   },
   description: {
-    type: DataTypes.STRING,
+    type: DataTypes.STRING(1000),
   },
   stock: {
     type: DataTypes.INTEGER,

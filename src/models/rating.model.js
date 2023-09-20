@@ -3,21 +3,25 @@ const sequelize = require("../config/sequelize");
 const { ROLES } = require("../config/type");
 const { DataTypes } = require("sequelize");
 
-const Profile = sequelize.define("profiles", {
-  accountId: {
+const Rating = sequelize.define("rating", {
+  id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
+    autoIncrement: true,
   },
-  name: {
-    type: DataTypes.STRING,
+  customerId: {
+    type: DataTypes.INTEGER,
   },
-  phone: {
-    type: DataTypes.STRING,
+  doctorId: {
+    type: DataTypes.INTEGER,
   },
   rate: {
     type: DataTypes.INTEGER,
-    defaultValue: 5,
+    values: Object.values(ROLES),
+  },
+  feedback: {
+    type: DataTypes.STRING(1000),
   },
 });
 
-module.exports = Profile;
+module.exports = Rating;

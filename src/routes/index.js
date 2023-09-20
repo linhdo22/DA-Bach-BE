@@ -5,6 +5,7 @@ const authRoute = require("./auth.route");
 const accountRoute = require("./account.route");
 const drugRoute = require("./drug.route");
 const bookingRoute = require("./booking.route");
+const ratingRoute = require("./rating.route");
 
 const defaultRoutes = [
   {
@@ -22,6 +23,10 @@ const defaultRoutes = [
   {
     path: "/booking",
     route: bookingRoute,
+  },
+  {
+    path: "/rating",
+    route: ratingRoute,
   },
 ];
 

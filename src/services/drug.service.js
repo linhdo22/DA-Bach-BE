@@ -5,7 +5,6 @@ const { Op } = require("sequelize");
 const { getPaginateData } = require("../utils/paginate");
 
 exports.createDrug = async (data, transaction) => {
-  console.log(data);
   const profile = await Drug.create(data, { transaction, raw: true });
   return profile;
 };

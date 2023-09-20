@@ -1,5 +1,5 @@
 const httpStatus = require("http-status");
-const { Booking, Profile, Account } = require("../models");
+const { Booking, Profile, Account, Diagnosis, Drug } = require("../models");
 const ApiError = require("../utils/ApiError");
 const { getPaginateData } = require("../utils/paginate");
 const { Op } = require("sequelize");
@@ -7,6 +7,7 @@ const sequelize = require("../config/sequelize");
 
 exports.getBookingById = async (id) => {
   return Booking.findOne({
+    logging: true,
     where: { id },
     attributes: {
       exclude: ["createdAt", "updatedAt"],
@@ -42,6 +43,22 @@ exports.getBookingById = async (id) => {
         include: {
           model: Profile,
           attributes: [],
+        },
+      },
+      {
+        model: Diagnosis,
+        attributes: ["id", "content"],
+        include: {
+          model: Drug,
+          attributes: [
+            "id",
+            "name",
+            [
+              sequelize.literal("`diagnosis->drugs->diagnosis_drug`.`count`"),
+              "count",
+            ],
+          ],
+          through: { attributes: [] },
         },
       },
     ],
@@ -94,6 +111,22 @@ exports.getBookingList = async (query) => {
         include: {
           model: Profile,
           attributes: [],
+        },
+      },
+      {
+        model: Diagnosis,
+        attributes: ["id", "content"],
+        include: {
+          model: Drug,
+          attributes: [
+            "id",
+            "name",
+            [
+              sequelize.literal("`diagnosis->drugs->diagnosis_drug`.`count`"),
+              "count",
+            ],
+          ],
+          through: { attributes: [] },
         },
       },
     ],
