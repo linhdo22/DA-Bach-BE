@@ -8,6 +8,6 @@ const ratingController = require("../controllers/rating.controller");
 
 router.get("/", auth([DOCTOR, CUSTOMER]), ratingController.getRatingList);
 router.post("/", auth([CUSTOMER]), ratingController.createRating);
-router.get("/check", auth([CUSTOMER]), ratingController.checkRated);
+router.get("/check", auth([CUSTOMER, DOCTOR]), ratingController.checkRated);
 
 module.exports = router;

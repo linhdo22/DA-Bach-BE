@@ -19,6 +19,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.options("*", cors());
 
+// public
+app.use(express.static("uploads"));
+
 // jwt authentication
 app.use(passport.initialize());
 passport.use("jwt", jwtStrategy);

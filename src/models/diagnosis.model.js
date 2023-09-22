@@ -19,6 +19,9 @@ const Diagnosis = sequelize.define("diagnoses", {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
+  image: {
+    type: DataTypes.STRING,
+  },
   content: {
     type: DataTypes.STRING(500),
   },

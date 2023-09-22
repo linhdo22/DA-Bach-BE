@@ -22,6 +22,8 @@ exports.getBookingById = async (id) => {
           "role",
           [sequelize.literal("`doctor->profile`.`name`"), "name"],
           [sequelize.literal("`doctor->profile`.`phone`"), "phone"],
+          [sequelize.literal("`doctor->profile`.`gender`"), "gender"],
+          [sequelize.literal("`doctor->profile`.`dateOfBirth`"), "dateOfBirth"],
           [sequelize.literal("`doctor->profile`.`rate`"), "rate"],
         ],
         include: {
@@ -38,6 +40,11 @@ exports.getBookingById = async (id) => {
           "role",
           [sequelize.literal("`customer->profile`.`name`"), "name"],
           [sequelize.literal("`customer->profile`.`phone`"), "phone"],
+          [sequelize.literal("`customer->profile`.`gender`"), "gender"],
+          [
+            sequelize.literal("`customer->profile`.`dateOfBirth`"),
+            "dateOfBirth",
+          ],
           [sequelize.literal("`customer->profile`.`rate`"), "rate"],
         ],
         include: {
@@ -47,7 +54,6 @@ exports.getBookingById = async (id) => {
       },
       {
         model: Diagnosis,
-        attributes: ["id", "content"],
         include: {
           model: Drug,
           attributes: [

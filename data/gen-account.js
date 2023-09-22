@@ -1,5 +1,5 @@
 const { faker } = require("@faker-js/faker");
-const { ROLES } = require("../src/config/type");
+const { ROLES, GENDER } = require("../src/config/type");
 const { accountService, profileService } = require("../src/services");
 
 const genAccount = (role, index) => {
@@ -15,6 +15,8 @@ const genProfile = (accountId) => {
     accountId,
     phone: faker.phone.number("09########"),
     name: faker.person.fullName(),
+    gender: Math.random() > 0.5 ? GENDER.MALE : GENDER.FEMALE,
+    dateOfBirth: faker.date.birthdate({ min: 18, max: 65 }),
   };
 };
 

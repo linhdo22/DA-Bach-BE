@@ -1,6 +1,6 @@
 const bcrypt = require("bcryptjs");
 const sequelize = require("../config/sequelize");
-const { ROLES } = require("../config/type");
+const { ROLES, GENDER } = require("../config/type");
 const { DataTypes } = require("sequelize");
 
 const Profile = sequelize.define("profiles", {
@@ -13,6 +13,13 @@ const Profile = sequelize.define("profiles", {
   },
   phone: {
     type: DataTypes.STRING,
+  },
+  dateOfBirth: {
+    type: DataTypes.DATE,
+  },
+  gender: {
+    type: DataTypes.ENUM,
+    values: [...Object.values(GENDER)],
   },
   rate: {
     type: DataTypes.INTEGER,
