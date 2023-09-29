@@ -2,15 +2,15 @@ const { faker } = require("@faker-js/faker");
 const moment = require("moment");
 const { Drug } = require("../src/models");
 
-const genDrug = () => {
+const genDrug = (name) => {
   return {
-    name: faker.word.noun(),
+    name,
     description: faker.lorem.text(),
     stock: faker.number.int({ min: 0, max: 100 }),
   };
 };
 
-exports.createDrug = async () => {
-  const b = genDrug();
+exports.createDrug = async (name) => {
+  const b = genDrug(name);
   await Drug.create(b);
 };

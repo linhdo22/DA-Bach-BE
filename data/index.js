@@ -3,6 +3,12 @@ const { ROLES } = require("../src/config/type");
 const { createAccount } = require("./gen-account");
 const { createBooking } = require("./gen-booking");
 const { createDrug } = require("./gen-drug");
+const fs = require("fs").promises;
+
+async function loadFile() {
+  const data = await fs.readFile("data/drugs.csv", "utf-8");
+  return data.split("\n");
+}
 
 const genData = async () => {
   await sequelize.sync({ alter: true, force: true });
@@ -33,8 +39,9 @@ const genData = async () => {
   }
 
   // drug
-  for (let i = 1; i <= 50; i++) {
-    await createDrug();
+  const drugs = await loadFile();
+  for (let i = 0; i < (await drugs).length; i++) {
+    await createDrug(drugs[i]);
   }
   console.log("done");
   sequelize.close();
